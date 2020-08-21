@@ -4,7 +4,7 @@ from tkinter.font import Font
 import ctypes
 from tkinter import messagebox
 
-from editor_services import read_config_app, write_config_app
+from EditorServices import read_config_app, write_config_app
 
 
 FILE_FORMATS = [('All Files', '*.*'),
@@ -17,6 +17,10 @@ FONT_SIZE = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72]
 
 
 class Editor(tk.Frame):
+    """
+    Window for creating, editing, saving files.
+    Contains a Text widget with a bound Scrollbar and Menu widget with File, Formats, Help fields.
+    """
     def __init__(self, master=None, font_family='Constantia', font_size=11):
         super().__init__(master)
         self.open_file_name = ''
@@ -63,10 +67,12 @@ class Editor(tk.Frame):
         menu_bar.add_command(label="Help", command=self.help_window)
 
     def createFontWindow(self, _class):
-        self.new = tk.Toplevel(self.master)
-        _class(self.new)
+        """Creates a window for setting fonts (class FontWindow)."""
+        self.font_window = tk.Toplevel(self.master)
+        _class(self.font_window)
 
     def create_file(self, *args):
+        """File creation."""
         current_file_name = filedialog.asksaveasfilename(filetypes=FILE_FORMATS, defaultextension=FILE_FORMATS)
         if current_file_name:
             self.open_file_name = current_file_name
@@ -77,6 +83,7 @@ class Editor(tk.Frame):
                 pass
 
     def open_file(self, *args):
+        """Opens an existing file."""
         current_file_name = filedialog.askopenfilename()
         if current_file_name:
             self.open_file_name = current_file_name
@@ -89,6 +96,7 @@ class Editor(tk.Frame):
                 self.text.insert(1.0, data)
 
     def save_file_as(self, *args):
+        """Creates a new file and copies the text from Text widget in new file."""
         content = self.text.get(1.0, tk.END)
         current_file_name = filedialog.asksaveasfilename(filetypes=FILE_FORMATS, defaultextension=FILE_FORMATS)
         if current_file_name:
@@ -100,6 +108,7 @@ class Editor(tk.Frame):
                 file.write(content)
 
     def save_file(self, *args):
+        """Saves the Text widget value to the current file (self.open_file_name)."""
         if self.open_file_name:
             content = self.text.get(1.0, tk.END)
             with open(self.open_file_name, "w") as file:
@@ -108,27 +117,34 @@ class Editor(tk.Frame):
             self.save_file_as()
 
     def help_window(self):
+        """Calls up information window."""
         messagebox.showinfo(title='AbyssEditor: information', message=f"Application Information: "
                                                                       f"\n\nFont family: {self.font_family}"
                                                                       f"\nFont size: {self.font_size}"
                                                                       f"\nWindow size (width, height): {self.master.winfo_width()}x{self.master.winfo_height()} px")
 
     def exit_program(self):
+        """Destroy the Editor window and save width, height window and font family, size in config file."""
         write_config_app(self.master.winfo_width(), self.master.winfo_height(), self.font_family, self.font_size)
         self.master.destroy()
 
 
 class FontWindow:
+    """
+    Font settings window. Called from Editor.
+    Contains a two Listbox widgets with a bound Scrollbar for setting font size and family.
+    """
     def __init__(self, master=None):
         self.current_font_family = app.font_family
         self.current_font_size = app.font_size
 
         self.master = master
-        self.master.maxsize(width=370, height=249)
+
+        self.master.maxsize(width=370, height=249)  # fixed window size
         self.master.minsize(width=370, height=249)
 
         self.master.title(f"Font settings")
-        self.master.iconbitmap('media/icon_6.ico')
+        self.master.iconbitmap('media/font_settings_icon.ico')
         self.create_widgets()
 
     def create_widgets(self):
@@ -173,7 +189,6 @@ class FontWindow:
                                              bd=0)
         self.cancel_button_border.grid(row=2, column=3, pady=14)
 
-
         self.save_font_button = tk.Button(self.save_font_button_border, text="Save", width=7, height=1, command=self.save_font)
         self.save_font_button.grid(row=2, column=2)
 
@@ -186,6 +201,7 @@ class FontWindow:
         self.font_size_scroll['command'] = self.font_size_listbox.yview
 
     def save_font_family(self, event):
+        """Saves the selected value from the font family list (font.families())."""
         try:
             font_list = list(tk.font.families())
             self.current_font_family = font_list[event.widget.curselection()[0]]
@@ -193,12 +209,14 @@ class FontWindow:
             pass
 
     def save_font_size(self, event):
+        """Saves the selected value from the font size list (FONT_SIZE)."""
         try:
             self.current_font_size = FONT_SIZE[event.widget.curselection()[0]]
         except IndexError:
             pass
 
     def save_font(self):
+        """Saving the selected font size and family to Editor.font_size, Editor.font_family"""
         app.font_family = self.current_font_family
         app.font_size = self.current_font_size
         my_font = Font(self.master, family=self.current_font_family, size=self.current_font_size)
@@ -206,7 +224,6 @@ class FontWindow:
         self.master.destroy()
 
     def destroy_font_window(self):
-        print(self.master.winfo_width(), self.master.winfo_height())
         self.master.destroy()
 
 
@@ -216,11 +233,14 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     root.title(f"Untitled \u2013 AbyssEditor")
-    root.iconbitmap('media/icon_5.ico')
-    config_data = read_config_app()
-    root.geometry(f"{config_data['window']['width']}x{config_data['window']['height']}")
+    root.iconbitmap('media/editor_icon.ico')
+
+    config_data = read_config_app()  # data from config file
+    root.geometry(f"{config_data['window']['width']}x{config_data['window']['height']}")  # resize the editor window to fit the configuration file
+
     app = Editor(master=root, font_family=config_data["text"]["font_family"], font_size=config_data["text"]["font_size"])
 
+    # configuring Hotkeys
     root.bind('<Control-n>', app.create_file)
     root.bind('<Control-N>', app.create_file)
 
@@ -234,4 +254,5 @@ if __name__ == "__main__":
     root.bind('<Control-S>', app.save_file)
 
     root.protocol("WM_DELETE_WINDOW", app.exit_program)
+
     root.mainloop()
