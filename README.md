@@ -25,5 +25,7 @@ The editor has **Menu bar** which contains **file menu**:
 
 **Font menu**:
 
+*all selected font options are saved in config.json*.
+
 ![](README_images/preview_2.PNG)
 
