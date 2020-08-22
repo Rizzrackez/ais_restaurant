@@ -35,3 +35,6 @@ The editor has **Menu bar** which contains **file menu**:
 
 ![](README_images/preview_4.PNG)
 
+# Editor installer
+
+You can also install the **AbyssEditor** installer (*AbyssEditor Installer.exe*).
