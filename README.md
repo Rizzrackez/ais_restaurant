@@ -9,7 +9,7 @@ But this version of the app uses:
 
 ```tkinter==8.6```
 
-You can also install app through the AbyssEditor installer (AbyssEditor Installer.exe).
+You can also install app through the installer (AbyssEditor Installer.exe).
 
 # Usage
 AbyssEditor is a file editor that can:
