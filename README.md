@@ -16,3 +16,7 @@ AbyssEditor is a file editor that can:
 - Change family, size font and save these to the config file.
 
 ![](README_images/preview_1.PNG)
+
+The editor has **Menu bar** which contains **file menu**:
+
+![](README_images/preview_3.PNG)
