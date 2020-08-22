@@ -9,6 +9,8 @@ But this version of the app uses:
 
 ```tkinter==8.6```
 
+You can also install the AbyssEditor installer (AbyssEditor Installer.exe).
+
 # Usage
 AbyssEditor is a file editor that can:
 
@@ -34,7 +36,3 @@ The editor has **Menu bar** which contains **file menu**:
 *shows window size, family and font size*.
 
 ![](README_images/preview_4.PNG)
-
-# Editor installer
-
-You can also install the **AbyssEditor** installer (*AbyssEditor Installer.exe*).
