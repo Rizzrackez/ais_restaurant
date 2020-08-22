@@ -29,3 +29,9 @@ The editor has **Menu bar** which contains **file menu**:
 
 ![](README_images/preview_2.PNG)
 
+**Help menu:**
+
+*shows window size, size and font family*.
+
+![](README_images/preview_4.PNG)
+
