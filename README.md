@@ -19,6 +19,8 @@ AbyssEditor is a file editor that can:
 
 The editor has **Menu bar** which contains **file menu**:
 
+*there are hotkeys for files functionality*
+
 ![](README_images/preview_3.jpg)
 
-*there are hotkeys for files functionality*
+
