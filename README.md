@@ -25,5 +25,5 @@ The editor has **Menu bar** which contains **file menu**:
 
 **Font menu**:
 
-![](README_images/preview_2.jpg)
+![](README_images/preview_2.PNG)
 
