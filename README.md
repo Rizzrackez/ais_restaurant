@@ -23,4 +23,6 @@ The editor has **Menu bar** which contains **file menu**:
 
 ![](README_images/preview_3.jpg)
 
+**Font menu**:
+
 
