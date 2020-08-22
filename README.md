@@ -33,6 +33,4 @@ The editor has **Menu bar** which contains **file menu**:
 
 **Help menu:**
 
-*shows window size, family and font size*.
-
 ![](README_images/preview_4.PNG)
