@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: center-tk-window
+Version: 1.0.0
+Summary: Functions for centering tkinter windows on parent or on screen
+Home-page: https://github.com/jarikmarwede/center-tk-window
+Author: Jarik Marwede
+Author-email: jarikmarwede@zoho.eu
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# Center tk window
+A small library for centering tkinter windows on their parent or on the screen.
+
+## Installation
+To install run the following command:
+`pip install center_tk_window`
+
+## Usage
+```python
+import tkinter
+import center_tk_window
+
+root_window = tkinter.Tk()
+window_to_center = tkinter.Toplevel(root_window)
+
+# Center a window on its parent unless it is the root window in which case it will be centered on screen.
+center_tk_window.center(root_window, window_to_center)
+
+# Center a window on its parent
+center_tk_window.center_on_parent(root_window, window_to_center)
+
+# Center a window on the screen
+center_tk_window.center_on_screen(window_to_center)
+
+```
+
+

@@ -1,0 +1,44 @@
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '9:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '9:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '10:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '10:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '11:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '11:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '12:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '12:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '13:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '13:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '14:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '14:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '15:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '15:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '16:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '16:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '17:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '17:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '18:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '18:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '19:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '19:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '20:00', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '20:30', 1);
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '21:00', 1);
+
+update db_reservation.reservation set comment='hi', clients_number=5, id_client=1, employee=1 where table_number = 1 and date_res = '2020-12-06' and time_res = '12:30';
+
+
+select time_res FROM reservation where date_res = '2020-12-06' and employee is not NULL;
+select time_res FROM reservation where date_res = '2020-12-06' and employee is NULL;
+
+
+SELECT
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day);
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 2 day);
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 3 day);
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 4 day);
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 5 day);
+SELECT DATE_ADD(UTC_DATE(), INTERVAL 6 day);
+
+insert into reservation (date_res, time_res, table_number) values ((SELECT DATE_ADD(UTC_DATE(), INTERVAL 1 day)), '9:00', 2);
+
+delete from reservation;
